@@ -1,0 +1,21 @@
+First thought was to go through each square and find number of available pizzerias.
+However this would be N^2M complexity
+
+Second idea is to construct an NxN map to keep track of number of available pizzerias.
+Then just cycle through M, before going over them all to find the maximum.
+Hence would be (MR^2 + N^2) complexity, R is small so significant improvement.
+
+A minor change is to track the maximum as you go and so not have to do the N^2 scan at the end.
+
+Complexity is O(N^2) memory, and O(N^2 + MR^2) for time. (N^2 from array initialization)
+
+
+Alternative approach:
+Instead of storing data in an array use a dictionary with location as key.
+This could save on the O(N^2) time to initialize array.
+This is particularly helpful if R is small.
+I've left this method in comments.
+
+complexity O(MR^2) which is better.
+But I assume the worse cases will have a fairly saturated map of pizzerias and so the whole map will be used.
+In this case the constants for the array are probably better.

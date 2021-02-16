@@ -1,0 +1,19 @@
+So immediate impression is that we want the minimum spanning tree.
+Once we have this we can use DFS to quite efficiently find a path.
+
+Kruskals algorithm can be used here. This is O(E logE) / O(E logV),
+which is still large since we have a fully connected graph.
+N=2000, gives E = 4000000.
+We can stop early once Earth and Zearth are in the same group.
+Most of the time comes from sorting the list of edges.
+
+
+A more exciting method is to use capacity scaling.
+Here we have some search bounds a < b.
+At each iteration we check if a path is possible using max length C = (a+b)/2
+To check a route is O(N^2). 
+number of iterations is O(log (|zearth_pos|)). In this case it's about 20.
+This is also nice for having O(N) memory.
+So this method technically has better scaling against N, but is worse in practice
+
+I've coded this method but the script uses Kruskals since it's faster for N=2000
